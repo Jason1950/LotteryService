@@ -6,5 +6,11 @@ type LoginRequest struct {
 }
 
 type LoginResponse struct {
-	Token string `json:"token"`
+	Balance float64 `json:"balance"`
+}
+
+type User struct {
+	Username string  `json:"username"`
+	Password string  `json:"password"`
+	Balance  float64 `json:"balance"`
 }

@@ -2,17 +2,26 @@ package main
 
 import (
 	"LotteryService/api/v1/auth"
+	"LotteryService/internal/config"
 	"LotteryService/internal/handler"
 	"LotteryService/internal/service"
+	"log"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	// 初始化數據庫連接
+	db, err := config.InitDB()
+	if err != nil {
+		log.Fatal("數據庫連接失敗:", err)
+	}
+	defer db.Close()
+
 	r := gin.Default()
 
 	// 初始化服務
-	authService := service.NewAuthService()
+	authService := service.NewAuthService(db)
 	authHandler := handler.NewAuthHandler(authService)
 
 	// 註冊路由
