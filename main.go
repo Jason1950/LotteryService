@@ -11,6 +11,11 @@ import (
 )
 
 func main() {
+	// 加載配置
+	if err := config.LoadConfig(); err != nil {
+		log.Fatal("加載配置失敗:", err)
+	}
+
 	// 初始化數據庫連接
 	db, err := config.InitDB()
 	if err != nil {

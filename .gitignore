@@ -1,0 +1,25 @@
+# 配置文件
+configs/appsettings.uat.json
+configs/appsettings.prod.json
+
+# 編譯文件
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# 測試文件
+*.test
+
+# 輸出文件
+*.out
+
+# IDE 文件
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 依賴目錄
+vendor/ 
