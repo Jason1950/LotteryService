@@ -18,7 +18,7 @@ func NewAuthService(db *sql.DB) *AuthService {
 
 func (s *AuthService) Login(req *model.LoginRequest) (*model.LoginResponse, error) {
 	var user model.User
-
+	// add jwt to do:
 	// 查詢用戶
 	err := s.db.QueryRow("SELECT username, password, balance, userid FROM custdb WHERE username = ?",
 		req.Username).Scan(&user.Username, &user.Password, &user.Balance, &user.UserId)
