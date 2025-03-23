@@ -23,10 +23,14 @@ func main() {
 	}
 	defer db.Close()
 
+	// 初始化 Redis 客戶端
+	redisClient := config.NewRedisClient()
+	defer redisClient.Close()
+
 	r := gin.Default()
 
 	// 初始化服務
-	authService := service.NewAuthService(db)
+	authService := service.NewAuthService(db, redisClient)
 	authHandler := handler.NewAuthHandler(authService)
 
 	// 註冊路由
